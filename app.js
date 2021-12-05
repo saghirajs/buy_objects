@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
+const auth = require('./middlewares/auth');
 
 mongoose.connect('mongodb+srv://saghirsaghir:saghirsaghir@cluster0.mvhef.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -23,7 +24,10 @@ app.use((req, res, next) => {
   
 
 // registering stuff routes into the app
-  app.use('/api/stuff', stuffRoutes);
+
+   app.use('/api/stuff', stuffRoutes);
+
+  
 
 
 // registering user routes into the app
